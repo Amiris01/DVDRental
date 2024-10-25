@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Movies</title>
+    <link rel="icon" type="image/x-icon" href="../public/images/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../public/devextreme/js/dx.all.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../public/devextreme/js/dx.aspnet.data.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/devextreme/css/dx.common.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/devextreme/css/dx.material.blue.light.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <style>
+      .rainbow_text_animated {
+        background: linear-gradient(
+          to right,
+          #6666ff,
+          #0099ff,
+          #00ff00,
+          #ff3399,
+          #6666ff
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow_animation 6s ease-in-out infinite;
+        background-size: 400% 100%;
+      }
+
+      @keyframes rainbow_animation {
+        0%,
+        100% {
+          background-position: 0 0;
+        }
+
+        50% {
+          background-position: 100% 0;
+        }
+      }
+      #updateForm label {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img src="../public/images/Speedy-Logo-Vector-PNG.png" width="100px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Rent Movie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Manage Movie</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./customers.html">Manage Customers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./rental.html">Manage Rental</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex justify-content-center pt-3">
+      <h1
+        class="rainbow_text_animated"
+        style="font-weight: bolder; padding: 10px"
+      >
+        Manage Movies
+      </h1>
+    </div>
+
+    <div class="container">
+      <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-info addMovie">Add Movie</button>
+      </div>
+      <div id="dataGridContainer" class="pb-4"></div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="update-form">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Update Movie</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="updateForm" enctype="multipart/form-data">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="title" class="form-label">Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="release_year" class="form-label"
+                    >Release Year</label
+                  >
+                  <input
+                    type="date"
+                    name="release_year"
+                    id="release_year"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <label for="desc" class="form-label">Description</label>
+                  <textarea
+                    name="desc"
+                    id="desc"
+                    class="form-control"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="lang" class="form-label">Language</label>
+                  <input
+                    type="text"
+                    name="lang"
+                    id="lang"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="rate" class="form-label">Rental Rate</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="rate"
+                    id="rate"
+                    placeholder="RM"
+                    min="0"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="rating" class="form-label">Ratings</label>
+                  <input
+                    type="number"
+                    name="rating"
+                    id="rating"
+                    min="0"
+                    max="10"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="img" class="form-label">Image</label>
+                  <input type="file" name="img" id="img" class="form-control" />
+                </div>
+              </div>
+              <!-- Image preview -->
+              <div class="col">
+                <div class="text-center justify-content-between">
+                  <label
+                    for="imgPreview"
+                    class="form-label"
+                    style="padding-right: 120px"
+                    >Image Preview</label
+                  >
+                  <img
+                    id="existing-img"
+                    class="img-fluid"
+                    width="150"
+                    alt="Image Preview"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="saveChanges">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="add-form">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Movie</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="addForm" enctype="multipart/form-data">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="title" class="form-label">Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title2"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="release_year" class="form-label"
+                    >Release Year</label
+                  >
+                  <input
+                    type="date"
+                    name="release_year"
+                    id="release_year2"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-12">
+                  <label for="desc" class="form-label">Description</label>
+                  <textarea
+                    name="desc"
+                    id="desc2"
+                    class="form-control"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="lang" class="form-label">Language</label>
+                  <input
+                    type="text"
+                    name="lang"
+                    id="lang2"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="rate" class="form-label">Rental Rate</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="rate"
+                    id="rate2"
+                    placeholder="RM"
+                    min="0"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="rating" class="form-label">Ratings</label>
+                  <input
+                    type="number"
+                    name="rating"
+                    id="rating2"
+                    min="0"
+                    max="10"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="img" class="form-label">Image</label>
+                  <input
+                    type="file"
+                    name="img"
+                    id="img2"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <!-- Image preview -->
+              <div class="col" style="display: none">
+                <div class="text-center justify-content-between">
+                  <label
+                    for="imgPreview"
+                    class="form-label"
+                    style="padding-right: 120px"
+                    >Image Preview</label
+                  >
+                  <img
+                    id="existing-img"
+                    class="img-fluid"
+                    width="150"
+                    alt="Image Preview"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="saveMovie">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="confirm-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete this movie from json file?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="confirmDelete">
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $("#confirm-modal").draggable();
+      });
+
+      $(function () {
+        $("#dataGridContainer").dxDataGrid({
+          dataSource: "../backend/dvd.json",
+          allowColumnReordering: true,
+          allowColumnResizing: true,
+          columnAutoWidth: true,
+          showBorders: true,
+          rowAlternationEnabled: true,
+          paging: {
+            pageSize: 5,
+            pageIndex: 0,
+          },
+          searchPanel: {
+            visible: true,
+            highlightCaseSensitive: true,
+          },
+          columnChooser: {
+            enabled: true,
+          },
+          columnFixing: {
+            enabled: true,
+          },
+          columns: [
+            {
+              caption: "Movie ID",
+              dataField: "dvdId",
+            },
+            {
+              dataField: "title",
+              caption: "Title",
+            },
+            // {
+            //   dataField: "desc",
+            //   caption: "Description",
+            //   width: 190,
+            //   cellTemplate: function(container, options) {
+            //         const text = options.value || "";
+            //         container.html('<div style="white-space: normal; word-wrap: break-word; word-break: break-word;">' + text + '</div>');
+            //     },
+            // },
+            {
+              dataField: "release_year",
+              caption: "Release Year",
+            },
+            {
+              dataField: "lang",
+              caption: "Language",
+            },
+            {
+              dataField: "rental_rate",
+              caption: "Rate/day (RM)",
+              calculateCellValue(data) {
+                return data.rental_rate.toFixed(2);
+              },
+            },
+            {
+              dataField: "rating",
+              caption: "Rating",
+              calculateCellValue(data) {
+                return data.rating * 10 + "/10";
+              },
+            },
+            {
+              caption: "Action",
+              calculateCellValue(data) {
+                return (
+                  '<button class="btn btn-primary updateMovie me-2" data-id="' +
+                  data.dvdId +
+                  '">Update</button>' +
+                  '<button class="btn btn-danger deleteMovie" data-id="' +
+                  data.dvdId +
+                  '">Delete</button>'
+                );
+              },
+              cellTemplate(container, options) {
+                container.html(options.value);
+              },
+            },
+          ],
+        });
+      });
+
+      $(document).on("click", ".updateMovie", function () {
+        $("#update-form").modal("show");
+        var movieId = Number($(this).data("id"));
+        $("#saveChanges").attr("data-id", movieId);
+        $.getJSON("../backend/dvd.json", function (data) {
+          var movie = data.find(function (item) {
+            return item.dvdId === movieId;
+          });
+
+          if (movie) {
+            $("#title").val(movie.title);
+            $("#desc").val(movie.desc);
+            let releaseYear = movie.release_year;
+            let releaseDate = releaseYear + "-01-01";
+            $("#release_year").val(releaseDate);
+            $("#lang").val(movie.lang);
+            $("#rate").val(movie.rental_rate);
+            $("#rating").val(movie.rating * 10);
+            $("#update-form").data("movieId", movie.dvdId);
+            $("#update-form").modal("show");
+          } else {
+            alert("Movie not found!");
+          }
+
+          if (movie.img) {
+            $("#existing-img").attr("src", "." + movie.img);
+          }
+
+          $("#img").on("change", function () {
+            var file = this.files[0];
+            if (file) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $("#existing-img").attr("src", e.target.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }).fail(function () {
+          console.error("Failed to load movie data.");
+        });
+      });
+
+      $(document).on("click", ".deleteMovie", function () {
+        var movieId = $(this).data("id");
+        $("#confirmDelete").attr("data-id", movieId);
+        $("#confirm-modal").modal("show");
+      });
+
+      $(document).on("click", ".addMovie", function () {
+        $("#add-form").modal("show");
+      });
+
+      $(document).ready(function () {
+        $("#saveMovie").click(function () {
+          var dvdId = Math.floor(Math.random() * 90000) + 10000;
+
+          var formData = new FormData();
+          formData.append("dvdId", dvdId);
+          formData.append("title", $("#title2").val());
+          formData.append("desc", $("#desc2").val());
+          formData.append("release_year", $("#release_year2").val());
+          formData.append("lang", $("#lang2").val());
+          formData.append("rate", $("#rate2").val());
+          formData.append("rating", $("#rating2").val());
+
+          var fileInput = $("#img2")[0];
+          var file = fileInput.files[0];
+          if (file) {
+            formData.append("img", file);
+          }
+
+          // console.log([...formData.entries()]);
+
+          $.ajax({
+            url: "../backend/addMovie.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+              alert("Movie added successfully with DVD ID: " + dvdId);
+              $("#add-form").modal("hide");
+              $("#dataGridContainer")
+                .dxDataGrid("instance")
+                .getDataSource()
+                .reload();
+              $("#dataGridContainer").dxDataGrid("instance").refresh();
+              location.reload();
+            },
+            error: function (xhr, status, error) {
+              alert("An error occurred while adding the movie.");
+            },
+          });
+        });
+      });
+
+      $("#confirmDelete").click(function () {
+        var movieId = $(this).data("id");
+
+        $.ajax({
+          url: "../backend/deleteMovie.php",
+          type: "POST",
+          data: JSON.stringify({ dvdId: movieId }),
+          contentType: "application/json",
+          success: function (response) {
+            alert("Movie deleted successfully!");
+            $("#confirm-modal").modal("hide");
+            $("#dataGridContainer")
+              .dxDataGrid("instance")
+              .getDataSource()
+              .reload();
+            $("#dataGridContainer").dxDataGrid("instance").refresh();
+            location.reload();
+          },
+          error: function (xhr, status, error) {
+            alert("An error occurred while deleting the movie.");
+          },
+        });
+      });
+
+      $("#saveChanges").click(function () {
+        var formData = new FormData($("#updateForm")[0]);
+        var dvdId = $(this).data("id");
+        formData.append("dvdId", dvdId);
+
+        $.ajax({
+          url: "../backend/updateMovie.php", // The URL of your PHP update script
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            try {
+              var result = JSON.parse(response);
+              if (result.status === "success") {
+                alert("Movie updated successfully.");
+                $("#update-form").modal("hide");
+                $("#dataGridContainer")
+                  .dxDataGrid("instance")
+                  .getDataSource()
+                  .reload();
+                $("#dataGridContainer").dxDataGrid("instance").refresh();
+              } else {
+                alert("An error occurred: " + result.message);
+              }
+            } catch (e) {
+              alert("Failed to parse server response.");
+              console.error("Response Error:", e);
+              console.error(response);
+            }
+          },
+          error: function (xhr, status, error) {
+            alert("An error occurred while updating the movie.");
+            console.error("AJAX Error:", status, error);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

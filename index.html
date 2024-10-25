@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speedy DVD Rental</title>
+    <link rel="icon" type="image/x-icon" href="./public/images/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./public/devextreme/js/dx.all.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./public/devextreme/js/dx.aspnet.data.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./public/devextreme/css/dx.common.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./public/devextreme/css/dx.material.blue.light.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <style>
+      .rainbow_text_animated {
+        background: linear-gradient(
+          to right,
+          #6666ff,
+          #0099ff,
+          #00ff00,
+          #ff3399,
+          #6666ff
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow_animation 6s ease-in-out infinite;
+        background-size: 400% 100%;
+      }
+
+      @keyframes rainbow_animation {
+        0%,
+        100% {
+          background-position: 0 0;
+        }
+
+        50% {
+          background-position: 100% 0;
+        }
+      }
+      .carousel {
+        margin-bottom: 20px;
+      }
+      .carousel-item img {
+        width: 100%; /* Ensures the image fills the container */
+        height: 50vh;
+        aspect-ratio: 16/9; /* Ensures the image maintains a consistent aspect ratio */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img src="public/images/Speedy-Logo-Vector-PNG.png" width="100px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Rent Movie</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./frontend/movies.html">Manage Movie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./frontend/customers.html">Manage Customers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./frontend/rental.html">Manage Rental</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="d-flex justify-content-center py-3">
+      <h1 class="rainbow_text_animated" style="font-weight: bolder">
+        Popular Movies Now
+      </h1>
+    </div>
+
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../DVDRental/public/images/cicakman1 carousel.jpg"
+            class="d-block w-100"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Cicakman 1</h5>
+            <p>Saiful Apek, Fasha Sandha, Datuk Yusry Abdul Halim</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../DVDRental/public/images/cicakman2 carousel.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Cicakman 2</h5>
+            <p>Saiful Apek, Fasha Sandha, Aznil Nawawi</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="../DVDRental/public/images/cicakman3 carousel.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Cicakman 3</h5>
+            <p>Zizan Razak, Lisa Surihani, Fizz Fairuz</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="d-flex justify-content-center pt-3">
+      <h1 class="rainbow_text_animated" style="font-weight: bolder">
+        Movie to Rent
+      </h1>
+    </div>
+
+    <div class="container">
+      <div id="dataGridContainer" class="pb-4"></div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="rental-info">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Rental Information</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-center mb-3">
+              <img src="" id="movie-img" width="150" />
+            </div>
+            <table class="table table-bordered">
+              <tr>
+                <th>Title</th>
+                <td><span id="movie-title"></span></td>
+              </tr>
+              <tr>
+                <th>Rented From</th>
+                <td><span id="rental-date"></span></td>
+              </tr>
+              <tr>
+                <th>Available After</th>
+                <td><span id="return-date"></span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="rental-form">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Rental Form</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="rentalForm">
+              <label for="cusId" class="pb-2"><b>Customer ID</b></label>
+              <div>
+                <select name="cusId" id="cusId" style="width: 100%">
+                  <option value="" style="display: none">
+                    Select Customer
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="return" class="pb-2 pt-2"><b>Return Date</b></label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="return_date"
+                  id="return_date"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="saveChanges">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $("#rental-form").draggable();
+        $("#rental-info").draggable();
+      });
+
+      $(function () {
+        $("#dataGridContainer").dxDataGrid({
+          dataSource: "./backend/dvd.json",
+          allowColumnReordering: true,
+          allowColumnResizing: true,
+          columnAutoWidth: true,
+          showBorders: true,
+          rowAlternationEnabled: true,
+          paging: {
+            pageSize: 5,
+            pageIndex: 0,
+          },
+          searchPanel: {
+            visible: true,
+            highlightCaseSensitive: true,
+          },
+          columnChooser: {
+            enabled: true,
+          },
+          columnFixing: {
+            enabled: true,
+          },
+          columns: [
+            {
+              caption: "Movie ID",
+              dataField: "dvdId",
+            },
+            {
+              dataField: "title",
+              caption: "Title",
+            },
+            {
+              dataField: "release_year",
+              caption: "Release Year",
+            },
+            {
+              dataField: "lang",
+              caption: "Language",
+            },
+            {
+              dataField: "rental_rate",
+              caption: "Rate/day (RM)",
+              calculateCellValue(data) {
+                return data.rental_rate.toFixed(2);
+              },
+            },
+            {
+              dataField: "rating",
+              caption: "Rating",
+              calculateCellValue(data) {
+                return data.rating * 10 + "/10";
+              },
+            },
+            {
+              caption: "Availability",
+              calculateCellValue(data) {
+                if (!data.rental || data.rental === null) {
+                  return (
+                    '<button class="btn btn-success rentform" data-id="' +
+                    data.dvdId +
+                    '">Available</button>'
+                  );
+                } else {
+                  return (
+                    '<button class="btn btn-danger rentinfo" data-id="' +
+                    data.dvdId +
+                    '">Not Available</button>'
+                  );
+                }
+              },
+              cellTemplate(container, options) {
+                container.html(options.value);
+              },
+            },
+          ],
+        });
+      });
+
+      $(function () {
+        $("#info").dxDataGrid({
+          dataSource: "./backend/dvd.json",
+          allowColumnReordering: true,
+          allowColumnResizing: true,
+          columnAutoWidth: true,
+          showBorders: true,
+          columnFixing: {
+            enabled: true,
+          },
+          columns: [
+            {
+              caption: "Rental ID",
+              dataField: "rental.rental_id",
+            },
+            {
+              caption: "Rental Date",
+              dataField: "rental.rental_date",
+              calculateCellValue(data) {
+                if (data.rental && data.rental.rental_date) {
+                  var timestamp = data.rental.rental_date;
+                  var a = new Date(timestamp * 1000);
+                  var months = [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                  ];
+                  var year = a.getFullYear();
+                  var month = months[a.getMonth()];
+                  var date = a.getDate();
+                  var time = date + " " + month + " " + year;
+                  return time;
+                } else {
+                  return "No Rental";
+                }
+              },
+            },
+            {
+              caption: "Return Date",
+              dataField: "rental.return_date",
+              calculateCellValue(data) {
+                if (data.rental && data.rental.return_date) {
+                  var timestamp = data.rental.return_date;
+                  var a = new Date(timestamp * 1000);
+                  var months = [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec",
+                  ];
+                  var year = a.getFullYear();
+                  var month = months[a.getMonth()];
+                  var date = a.getDate();
+                  var time = date + " " + month + " " + year;
+                  return time;
+                } else {
+                  return "No Rental";
+                }
+              },
+            },
+          ],
+        });
+      });
+
+      $(document).ready(function () {
+        $("#saveChanges").click(function () {
+          var returnDate = $("#return_date").val();
+          var movieId = $("#rental-form").data("movieId");
+          var cusId = $("#cusId").val();
+
+          $.ajax({
+            url: "./backend/updateRental.php",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              movieId: movieId,
+              returnDate: returnDate,
+              cusId: cusId,
+            }),
+            success: function (response) {
+              alert("Changes saved successfully!");
+              $("#rental-form").modal("hide");
+              location.reload();
+            },
+            error: function (xhr, status, error) {
+              alert("An error occurred while saving changes.");
+            },
+          });
+        });
+      });
+
+      $(document).on("click", ".rentinfo", function () {
+        $("#rental-info").modal("show");
+        var movieId = $(this).data("id");
+        showMovieDetails(movieId);
+      });
+
+      $(document).on("click", ".rentform", function () {
+        $("#rental-form").modal("show");
+        var movieId = $(this).data("id");
+        $("#rental-form").data("movieId", movieId);
+        //showMovieDetails(movieId);
+      });
+
+      function formatDate(timestamp) {
+        if (!timestamp) return "No Rental";
+
+        var date = new Date(timestamp * 1000);
+        var day = String(date.getDate()).padStart(2, "0");
+        var month = String(date.getMonth() + 1).padStart(2, "0");
+        var year = date.getFullYear();
+
+        return `${day}/${month}/${year}`;
+      }
+
+      function showMovieDetails(movieId) {
+        $.get("./backend/dvd.json", function (data) {
+          var movie = data.find(function (item) {
+            return item.dvdId === movieId;
+          });
+          if (movie) {
+            var rentalDate = movie.rental
+              ? formatDate(movie.rental.rental_date)
+              : "No Rental";
+            var returnDate = movie.rental
+              ? formatDate(movie.rental.return_date)
+              : "No Rental";
+
+            $("#movie-img").attr(
+              "src",
+              movie.img || "./public/images/no images.jpg"
+            );
+            $("#rental-id").text(movie.rental ? movie.rental.rental_id : "N/A");
+            $("#rental-date").text(rentalDate);
+            $("#return-date").text(returnDate);
+            $("#movie-title").text(movie.title);
+
+            $("#rental-info").modal("show");
+          }
+        });
+      }
+
+      $.getJSON("./backend/customer.json", function (data) {
+        var $select = $("#cusId");
+
+        $.each(data, function (index, customer) {
+          var $option = $("<option></option>")
+            .val(customer.customer_id)
+            .text(customer.name);
+
+          $select.append($option);
+          $select.select2({
+            placeholder: "Select Customer",
+            allowClear: true,
+            dropdownParent: $("#rental-form"),
+          });
+        });
+      }).fail(function () {
+        console.error("Failed to load customer data.");
+      });
+    </script>
+  </body>
+</html>

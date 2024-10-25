@@ -1,0 +1,65 @@
+[
+    {
+        "customer_id": 1,
+        "name": "Amir Iskandar",
+        "contact_num": "0136298902",
+        "email": "amiriskandar@gmail.com",
+        "address": "Melaka Tengah",
+        "active": true,
+        "create_date": "2024-01-01"
+    },
+    {
+        "customer_id": 2,
+        "name": "John",
+        "contact_num": "0123232452",
+        "email": "john@gmail.com",
+        "address": "John House, LA, USA",
+        "active": true,
+        "create_date": "2024-01-01"
+    },
+    {
+        "customer_id": 3,
+        "name": "Jane",
+        "contact_num": "01642323421",
+        "email": "Jane@gmail.com",
+        "address": "Jane House, COL, USA",
+        "active": true,
+        "create_date": "2024-01-01"
+    },
+    {
+        "customer_id": 4,
+        "name": "Jenny",
+        "contact_num": "01743232352",
+        "email": "jenny@gmail.com",
+        "address": "Jenny House, LA, USA",
+        "active": true,
+        "create_date": "2024-01-01"
+    },
+    {
+        "customer_id": 5,
+        "name": "Johnson Jr.",
+        "contact_num": "01924443211",
+        "email": "johnson@gmail.com",
+        "address": "The Johnsons, NY, USA",
+        "active": false,
+        "create_date": "2024-01-01"
+    },
+    {
+        "customer_id": 19928,
+        "name": "test",
+        "contact_num": "01613342321",
+        "email": "test",
+        "address": "test",
+        "active": true,
+        "create_date": "2024-08-19"
+    },
+    {
+        "customer_id": 66997,
+        "name": "test2",
+        "email": "test2",
+        "address": "test2",
+        "active": true,
+        "create_date": "2024-08-19",
+        "contact_num": "03189231212"
+    }
+]

@@ -1,0 +1,157 @@
+[
+    {
+        "dvdId": 1,
+        "title": "The Titanic",
+        "desc": "Incorporating both historical and fictionalized aspects, it is based on accounts of the sinking of RMS Titanic in 1912. Leonardo DiCaprio and Kate Winslet star as members of different social classes who fall in love during the ship's maiden voyage.",
+        "release_year": 1997,
+        "lang": "ENG",
+        "rental_rate": 10,
+        "rating": 0.5,
+        "img": "./public/images/Titanic_(1997_film)_poster.png",
+        "rental": {
+            "rental_id": 944404,
+            "rental_date": 1723714872,
+            "return_date": 1724364000,
+            "customer_id": "1"
+        }
+    },
+    {
+        "dvdId": 2,
+        "title": "Deadpool & Wolverine",
+        "desc": "Deadpool is offered a place in the Marvel Cinematic Universe by the Time Variance Authority, but instead recruits a variant of Wolverine to save his universe from extinction. A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him.",
+        "release_year": 2024,
+        "lang": "ENG",
+        "rental_rate": 1000,
+        "rating": 1,
+        "img": "./public/images/Deadpool_&_Wolverine_poster.jpg",
+        "rental": {
+            "rental_id": 848587,
+            "rental_date": 1723776517,
+            "return_date": 1724277600,
+            "customer_id": "3"
+        }
+    },
+    {
+        "dvdId": 3,
+        "title": "Avengers: Endgame",
+        "desc": "AVENGERS: ENDGAME is set after Thanos' catastrophic use of the Infinity Stones randomly wiped out half of Earth's population in Avengers: Infinity War. Those left behind are desperate to do something -- anything -- to bring back their lost loved ones.",
+        "release_year": 2019,
+        "lang": "ENG",
+        "rental_rate": 5,
+        "rating": 0.6,
+        "img": "./public/images/avengers.jpg",
+        "rental": {
+            "rental_id": 494319,
+            "rental_date": 1723712711,
+            "return_date": 1731538800,
+            "customer_id": "4"
+        }
+    },
+    {
+        "dvdId": 4,
+        "title": "Cicakman",
+        "desc": "It revolves around a lab assistant, Hairi who accidentally gets his 'superpowers' and slowly turns into the reptile-like 'cicak' (lizard). Now Hairi, as Cicakman, strives to save the people of Metrofulus from the evil Professor Klon who plans to take over the city.",
+        "release_year": 2006,
+        "lang": "MALAY",
+        "rental_rate": 1,
+        "rating": 0.8,
+        "img": "./public/images/az5.webp",
+        "rental": {
+            "rental_id": 521773,
+            "rental_date": 1723715702,
+            "return_date": 1734735600,
+            "customer_id": "5"
+        }
+    },
+    {
+        "dvdId": 5,
+        "title": "Cicakman 2",
+        "desc": "The evil Professor Klon (Aznil Nawawi) is back after his previous defeat. This time, not only to overthrow the government and becomes the President of Metrofulus, but also to control the world's supply of fresh water through his ingenious plan: Black Planet.",
+        "release_year": 2008,
+        "lang": "MALAY",
+        "rental_rate": 2,
+        "rating": 0.7,
+        "img": "./public/images/Poster_cicakman_2_planet_hitam.jpg",
+        "rental": {
+            "rental_id": 535929,
+            "rental_date": 1724041173,
+            "return_date": 1724968800,
+            "customer_id": "3"
+        }
+    },
+    {
+        "dvdId": 6,
+        "title": "Cicakman 3",
+        "desc": "Seven years on after the Black Planet incident, Cicakman the former superhero of Metrofulus has since disappeared, assumed by the public to have either died or retired. In his absence, a new superhero known as SuperBro has emerged to become the defender of Metrofulus.",
+        "release_year": 2008,
+        "lang": "MALAY",
+        "rental_rate": 3,
+        "rating": 0.6,
+        "img": "./public/images/Cicakman3ms.jpg",
+        "rental": {
+            "rental_id": 386453,
+            "rental_date": 1723779004,
+            "return_date": 1728511200,
+            "customer_id": "1"
+        }
+    },
+    {
+        "dvdId": 7,
+        "title": "Avengers: Civil War",
+        "desc": "The Avengers Civil War was a conflict between members of the Avengers that stemmed from tensions between two factions of the team led by Captain America and Iron Man over their divisive opinions of registering into the Sokovia Accords.",
+        "release_year": 2016,
+        "lang": "ENG",
+        "rental_rate": 5,
+        "rating": 0.9,
+        "img": "./public/images/civil_war.jpg",
+        "rental": {
+            "rental_id": 839983,
+            "rental_date": 1724050340,
+            "return_date": 1724191200,
+            "customer_id": "4"
+        }
+    },
+    {
+        "dvdId": 8,
+        "title": "Dilwale",
+        "desc": "The younger siblings of two estranged lovers fall for each other, unaware of the violent past that drove the elder ones apart. Raj is a Mafia member. One day he meets a girl (Meera) while being chased by his rival gang and falls in love with her.",
+        "release_year": 2015,
+        "lang": "HINDI",
+        "rental_rate": 10,
+        "rating": 0.8,
+        "img": "./public/images/dilwale.jpg",
+        "rental": null
+    },
+    {
+        "dvdId": 9,
+        "title": "Mystery to Iunakare: The Movie",
+        "desc": "Kuno Totono is a college student with naturally curly hair. He is extremely smart and loves curry, but doesn't have any friends or a girlfriend. Kuno Totono loves to talk and he can often solve difficult problems simply by talking it through. One day, Kuno Totono visits the city of Hiroshima. There, he gets involved with a mystery involving the succession of the Kariatsumari family\u2019s property.",
+        "release_year": 2023,
+        "lang": "JAPANESE",
+        "rental_rate": 50,
+        "rating": 1,
+        "img": "./public/images/mystery.jpeg",
+        "rental": {
+            "rental_id": 704534,
+            "rental_date": 1723779592,
+            "return_date": 1723413600,
+            "customer_id": "1"
+        }
+    },
+    {
+        "dvdId": 10,
+        "title": "The SpongeBob Movie: Sponge on the Run",
+        "desc": "A square yellow sponge named SpongeBob SquarePants lives in a pineapple with his pet snail, Gary, in the city of Bikini Bottom on the floor of the Pacific Ocean. He works as a fry cook at the Krusty Krab. During his time off, SpongeBob has a knack for attracting trouble with his starfish best friend, Patrick.",
+        "release_year": 2020,
+        "lang": "ENG",
+        "rental_rate": 25,
+        "rating": 0.7,
+        "img": "./public/images/spongebob.jpg",
+        "rental": {
+            "rental_id": 109490,
+            "rental_date": 1723795151,
+            "return_date": 1724277600,
+            "customer_id": "1"
+        }
+    }
+]
